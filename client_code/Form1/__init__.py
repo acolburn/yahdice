@@ -1,17 +1,23 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import random
 import time
-from ..Player1 import Player1
-from ..Player2 import Player2
+
 
 
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
     # Any code you write here will run before the form opens.
+    self.player_1.role=None
+    self.player_2.role=None
+    
+    
+    
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -45,24 +51,38 @@ class Form1(Form1Template):
     image.source = None
     dice = ['_/theme/1.png','_/theme/2.png','_/theme/3.png','_/theme/4.png','_/theme/5.png','_/theme/6.png']
     image_number = random.choice(dice)
-    time.sleep(0.5)
+    time.sleep(0.2)
     image.source = image_number
     # return image_number
 
   def player_1_click(self, **event_args):
     """This method is called when the link is clicked"""
-    self.content_panel.clear()
-    self.content_panel.add_component(self.grid_panel_1)
-    self.content_panel.add_component(self.spacer_1)
-    self.content_panel.add_component(Player1())
+    print('Player1 clicked')
+    self.item = app_tables.table_1.get(name="player1")
+    self.player_1.role="selected"
+    self.player_2.role=None
     
 
   def player_2_click(self, **event_args):
     """This method is called when the link is clicked"""
-    self.content_panel.clear()
-    self.content_panel.add_component(self.grid_panel_1)
-    self.content_panel.add_component(self.spacer_1)
-    self.content_panel.add_component(Player2())
+    print('Player2 clicked')
+    self.item = app_tables.table_1.get(name="player2")
+    self.player_1.role=None
+    self.player_2.role="selected"
+
+  def clear_scores(self):
+    app_tables.table_1.delete_all_rows()
+    app_tables.table_1.add_row(name="player1")
+    app_tables.table_1.add_row(name="player2")
+
+  def outlined_button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.clear_scores()
+    self.item = app_tables.table_1.get(name="player1")
+    self.player_1.role="selected"
+    self.player_2.role=None
+
+
     
     
 
