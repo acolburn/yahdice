@@ -59,115 +59,6 @@ components:
     name: spacer_1
     properties: {height: 32}
     type: Spacer
-  - components:
-    - layout_properties: {col_xs: 0, row: RWECJR, width_xs: 1}
-      name: label_2
-      properties: {bold: true, font_size: 16, text: 1's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: RWECJR, width_xs: 3}
-      name: text_box_1
-      properties: {placeholder: ''}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: RWECJR, width_xs: 3}
-      name: label_8
-      properties: {bold: true, font_size: 16, text: 3 of a Kind}
-      type: Label
-    - layout_properties: {col_xs: 8, row: RWECJR, width_xs: 3}
-      name: text_box_3_kind
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 0, row: MQLNUX, width_xs: 1}
-      name: label_6
-      properties: {bold: true, font_size: 16, text: 2's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: MQLNUX, width_xs: 3}
-      name: text_box_2
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: MQLNUX, width_xs: 3}
-      name: label_9
-      properties: {bold: true, font_size: 16, text: 4 of a Kind}
-      type: Label
-    - layout_properties: {col_xs: 8, row: MQLNUX, width_xs: 3}
-      name: text_box_4_kind
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 0, row: ZNWMBH, width_xs: 1}
-      name: label_3
-      properties: {bold: true, font_size: 16, text: 3's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: ZNWMBH, width_xs: 3}
-      name: text_box_3
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: ZNWMBH, width_xs: 3}
-      name: label_10
-      properties: {bold: true, font_size: 16, text: Full House}
-      type: Label
-    - layout_properties: {col_xs: 8, row: ZNWMBH, width_xs: 3}
-      name: text_box_full_house
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 0, row: SQCTMM, width_xs: 1}
-      name: label_5
-      properties: {bold: true, font_size: 16, text: 4's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: SQCTMM, width_xs: 3}
-      name: text_box_4
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: SQCTMM, width_xs: 3}
-      name: label_11
-      properties: {bold: true, font_size: 16, text: Small Straight}
-      type: Label
-    - layout_properties: {col_xs: 8, row: SQCTMM, width_xs: 3}
-      name: text_box_sm_straight
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 0, row: CKRIKY, width_xs: 1}
-      name: label_4
-      properties: {bold: true, font_size: 16, text: 5's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: CKRIKY, width_xs: 3}
-      name: text_box_5
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: CKRIKY, width_xs: 3}
-      name: label_12
-      properties: {bold: true, font_size: 16, text: Large Straight}
-      type: Label
-    - layout_properties: {col_xs: 8, row: CKRIKY, width_xs: 3}
-      name: text_box_lg_straight
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 0, row: JEVPEA, width_xs: 1}
-      name: label_7
-      properties: {bold: true, font_size: 16, role: null, text: 6's}
-      type: Label
-    - layout_properties: {col_xs: 1, row: JEVPEA, width_xs: 3}
-      name: text_box_6
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: JEVPEA, width_xs: 3}
-      name: label_13
-      properties: {bold: true, font_size: 16, text: Chance}
-      type: Label
-    - layout_properties: {col_xs: 8, row: JEVPEA, width_xs: 3}
-      name: text_box_chance
-      properties: {}
-      type: TextBox
-    - layout_properties: {col_xs: 5, row: XBTTDF, width_xs: 3}
-      name: label_14
-      properties: {bold: true, font_size: 16, text: Yahtzee}
-      type: Label
-    - layout_properties: {col_xs: 8, row: XBTTDF, width_xs: 3}
-      name: text_box_yahtzee
-      properties: {}
-      type: TextBox
-    layout_properties: {grid_position: 'QPCTIU,KRKXMJ'}
-    name: grid_panel_2
-    properties: {}
-    type: GridPanel
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
@@ -181,11 +72,13 @@ components:
   properties: {align: left, bold: true, font_size: 32, text: Yahdice!}
   type: Label
 - components:
-  - layout_properties: {grid_position: 'FFFHHP,AXYRRG'}
+  - event_bindings: {click: player_1_click}
+    layout_properties: {grid_position: 'FFFHHP,AXYRRG'}
     name: player_1
     properties: {icon: '', role: title, text: Player One}
     type: Link
-  - layout_properties: {grid_position: 'IURGHM,XZQGYX'}
+  - event_bindings: {click: player_2_click}
+    layout_properties: {grid_position: 'IURGHM,XZQGYX'}
     name: player_2
     properties: {role: title, text: Player Two}
     type: Link

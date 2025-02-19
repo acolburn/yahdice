@@ -12,6 +12,8 @@ unique_ids:
   forms:
     Form1: B2JDIFJEJBOPLXAY2GDULM72CHRMZHFH
     Form1.RowTemplate1: '173992149451467511586537.725266'
+    Player1: '1739926764322660739452138.5759'
+    Player2: '1739926806307889761690711.8018'
   modules: {}
   scripts: {}
   server_modules: {}
