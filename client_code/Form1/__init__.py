@@ -82,6 +82,8 @@ class Form1(Form1Template):
     self.player_1.role="selected"
     self.player_2.role=None
 
+  
+
 
     
     
