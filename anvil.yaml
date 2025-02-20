@@ -45,12 +45,15 @@ db_schema:
     - admin_ui: {order: 13, width: 200}
       name: yahtzee
       type: number
+    - admin_ui: {order: 14, width: 200}
+      name: bonus
+      type: number
     server: full
     title: Table 1
 dependencies: []
-metadata: {logo_img: 'asset:playstore.png', title: Dice Roller}
-name: Dice Roller
-package_name: Dice_Roller
+metadata: {logo_img: 'asset:playstore.png', title: Yahdice}
+name: Yahdice
+package_name: Yahdice
 renamed: true
 runtime_options:
   client_version: '3'
