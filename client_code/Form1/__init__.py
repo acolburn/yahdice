@@ -13,9 +13,11 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    self.player_1.role=None
-    self.player_2.role=None
+    # self.player_1.role=None
+    # self.player_2.role=None
+    self.player_1_click()
     self.images=[]
+
     
     
     
@@ -93,8 +95,8 @@ class Form1(Form1Template):
     sum=0
     scores=[self.item['ones'], self.item['twos'], self.item['threes'], self.item['fours'], self.item['fives'], self.item['sixes']]
     for score in scores:
-      if isinstance(score, int) :
-        sum+=score
+       if isinstance(score, int):
+        sum+=score 
     if sum>=63:
       self.item['bonus']=50
       self.text_box_bonus.text=50
@@ -112,7 +114,7 @@ class Form1(Form1Template):
            self.item['3_kind'], self.item['4_kind'], self.item['full_house'], self.item['sm_straight'], self.item['lg_straight'], 
            self.item['chance'], self.item['yahtzee']]
     for score in scores:
-      if score is not None:
+      if isinstance(score, int) :
         sum+=score
     self.label_score.text=str(sum)
 
