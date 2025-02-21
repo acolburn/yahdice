@@ -45,17 +45,20 @@ class Form1(Form1Template):
     self.item = app_tables.table_1.get(name="player1")
     self.player_1.role="selected"
     self.player_2.role=None
+    self.label_score.text = ''
     
 
   def player_2_click(self, **event_args):
     self.item = app_tables.table_1.get(name="player2")
     self.player_1.role=None
     self.player_2.role="selected"
+    self.label_score.text = ''
 
   def clear_scores(self):
     app_tables.table_1.delete_all_rows()
     app_tables.table_1.add_row(name="player1")
     app_tables.table_1.add_row(name="player2")
+    
 
   def button_new_click(self, **event_args):
     """This method is called when the New Game button is clicked"""
@@ -63,6 +66,7 @@ class Form1(Form1Template):
     self.item = app_tables.table_1.get(name="player1")
     self.player_1.role="selected"
     self.player_2.role=None
+    self.label_score.text=''
 
   def link_1_click(self, **event_args):
    self.image_click(self.image_1)
@@ -84,6 +88,34 @@ class Form1(Form1Template):
     image.visible = False
     self.images.append(image)
     self.button_roll.text="Roll Selected Dice"
+
+  def check_for_bonus(self):
+    sum=0
+    scores=[self.item['ones'], self.item['twos'], self.item['threes'], self.item['fours'], self.item['fives'], self.item['sixes']]
+    for score in scores:
+      if score is not None:
+        sum+=score
+    if sum>=63:
+      self.item['bonus']=50
+      self.text_box_bonus.text=50
+    else:
+      self.item['bonus']=0
+      self.text_box_bonus.text=0
+
+
+
+  def calculate_score_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.check_for_bonus()
+    sum=0
+    scores=[self.item['ones'], self.item['twos'], self.item['threes'], self.item['fours'], self.item['fives'], self.item['sixes'], self.item['bonus'],
+           self.item['3_kind'], self.item['4_kind'], self.item['full_house'], self.item['sm_straight'], self.item['lg_straight'], 
+           self.item['chance'], self.item['yahtzee']]
+    for score in scores:
+      if score is not None:
+        sum+=score
+    self.label_score.text=str(sum)
+
 
   
 

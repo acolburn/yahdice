@@ -100,6 +100,7 @@ components:
     - data_bindings:
       - {code: '', property: enabled, writeback: false}
       - {code: 'self.item[''twos'']', property: text, writeback: true}
+      event_bindings: {}
       layout_properties: {col_xs: 1, row: MQLNUX, width_xs: 3}
       name: text_box_2
       properties: {type: number}
@@ -201,7 +202,7 @@ components:
     - data_bindings:
       - {code: 'self.item[''bonus'']', property: text, writeback: true}
       layout_properties: {col_xs: 1, row: XBTTDF, width_xs: 3}
-      name: text_box_7
+      name: text_box_bonus
       properties: {type: number}
       type: TextBox
     - layout_properties: {col_xs: 5, row: XBTTDF, width_xs: 3}
@@ -214,6 +215,15 @@ components:
       name: text_box_yahtzee
       properties: {type: number}
       type: TextBox
+    - event_bindings: {click: calculate_score_click}
+      layout_properties: {col_xs: 0, row: XRONKF, width_xs: 5}
+      name: calculate_score
+      properties: {align: center, font_size: 24, role: filled-button, text: CALCULATE SCORE}
+      type: Button
+    - layout_properties: {col_xs: 5, row: XRONKF, width_xs: 3}
+      name: label_score
+      properties: {font_size: 24}
+      type: Label
     layout_properties: {grid_position: 'CDQVSN,JXPVGL'}
     name: grid_panel_1_copy
     properties: {}
