@@ -93,7 +93,7 @@ class Form1(Form1Template):
     sum=0
     scores=[self.item['ones'], self.item['twos'], self.item['threes'], self.item['fours'], self.item['fives'], self.item['sixes']]
     for score in scores:
-      if score is not None:
+      if isinstance(score, int) :
         sum+=score
     if sum>=63:
       self.item['bonus']=50
