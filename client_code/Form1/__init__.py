@@ -73,7 +73,7 @@ class Form1(Form1Template):
     # randomly select a dice image
     image_number = random.choice(dice)
     # wait a moment so player knows something happened
-    time.sleep(0.2)
+    # time.sleep(0.2)
     # assign the image source to the randomly selected dice image, and make it visible
     image.source = image_number
     image.visible = True
