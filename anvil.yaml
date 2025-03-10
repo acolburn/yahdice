@@ -1,55 +1,5 @@
 allow_embedding: false
-db_schema:
-  table_1:
-    client: full
-    columns:
-    - admin_ui: {order: 0, width: 200}
-      name: name
-      type: string
-    - admin_ui: {order: 1, width: 200}
-      name: ones
-      type: number
-    - admin_ui: {order: 2, width: 200}
-      name: twos
-      type: number
-    - admin_ui: {order: 3, width: 200}
-      name: threes
-      type: number
-    - admin_ui: {order: 4, width: 200}
-      name: fours
-      type: number
-    - admin_ui: {order: 5, width: 200}
-      name: fives
-      type: number
-    - admin_ui: {order: 6, width: 200}
-      name: sixes
-      type: number
-    - admin_ui: {order: 7, width: 200}
-      name: 3_kind
-      type: number
-    - admin_ui: {order: 8, width: 200}
-      name: 4_kind
-      type: number
-    - admin_ui: {order: 9, width: 200}
-      name: full_house
-      type: number
-    - admin_ui: {order: 10, width: 200}
-      name: sm_straight
-      type: number
-    - admin_ui: {order: 11, width: 200}
-      name: lg_straight
-      type: number
-    - admin_ui: {order: 12, width: 200}
-      name: chance
-      type: number
-    - admin_ui: {order: 13, width: 200}
-      name: yahtzee
-      type: number
-    - admin_ui: {order: 14, width: 200}
-      name: bonus
-      type: number
-    server: full
-    title: Table 1
+db_schema: {}
 dependencies: []
 metadata: {logo_img: 'asset:playstore.png', title: Yahdice}
 name: Yahdice

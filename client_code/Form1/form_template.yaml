@@ -53,6 +53,26 @@ components:
       name: link_5
       properties: {}
       type: Link
+    - layout_properties: {col_xs: 0, row: QKDNFL, width_xs: 2}
+      name: image_1_selected
+      properties: {height: '121', source: _/theme/1.png, visible: false}
+      type: Image
+    - layout_properties: {col_xs: 2, row: QKDNFL, width_xs: 2}
+      name: image_2_selected
+      properties: {height: '121', source: _/theme/1.png, visible: false}
+      type: Image
+    - layout_properties: {col_xs: 4, row: QKDNFL, width_xs: 2}
+      name: image_3_selected
+      properties: {height: '121', source: _/theme/1.png, visible: false}
+      type: Image
+    - layout_properties: {col_xs: 6, row: QKDNFL, width_xs: 2}
+      name: image_4_selected
+      properties: {height: '121', source: _/theme/1.png, visible: false}
+      type: Image
+    - layout_properties: {col_xs: 8, row: QKDNFL, width_xs: 2}
+      name: image_5_selected
+      properties: {height: '121', source: _/theme/1.png, visible: false}
+      type: Image
     - event_bindings: {click: button_roll_click}
       layout_properties: {col_xs: 0, row: SOFJOX, width_xs: 10}
       name: button_roll
@@ -79,7 +99,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''ones'']', property: text, writeback: true}
-      event_bindings: {}
+      event_bindings: {change: text_box_1_change}
       layout_properties: {col_xs: 1, row: RWECJR, width_xs: 3}
       name: text_box_1
       properties: {enabled: true, placeholder: '', type: number, visible: true}
@@ -90,6 +110,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''3_kind'']', property: text, writeback: true}
+      event_bindings: {change: text_box_3_kind_change}
       layout_properties: {col_xs: 8, row: RWECJR, width_xs: 3}
       name: text_box_3_kind
       properties: {type: number}
@@ -101,7 +122,7 @@ components:
     - data_bindings:
       - {code: '', property: enabled, writeback: false}
       - {code: 'self.item[''twos'']', property: text, writeback: true}
-      event_bindings: {}
+      event_bindings: {change: text_box_2_change}
       layout_properties: {col_xs: 1, row: MQLNUX, width_xs: 3}
       name: text_box_2
       properties: {type: number}
@@ -112,6 +133,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''4_kind'']', property: text, writeback: true}
+      event_bindings: {change: text_box_4_kind_change}
       layout_properties: {col_xs: 8, row: MQLNUX, width_xs: 3}
       name: text_box_4_kind
       properties: {type: number}
@@ -122,6 +144,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''threes'']', property: text, writeback: true}
+      event_bindings: {change: text_box_3_change}
       layout_properties: {col_xs: 1, row: ZNWMBH, width_xs: 3}
       name: text_box_3
       properties: {type: number}
@@ -132,6 +155,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''full_house'']', property: text, writeback: true}
+      event_bindings: {change: text_box_full_house_change}
       layout_properties: {col_xs: 8, row: ZNWMBH, width_xs: 3}
       name: text_box_full_house
       properties: {type: number}
@@ -142,6 +166,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''fours'']', property: text, writeback: true}
+      event_bindings: {change: text_box_4_change}
       layout_properties: {col_xs: 1, row: SQCTMM, width_xs: 3}
       name: text_box_4
       properties: {type: number}
@@ -152,6 +177,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''sm_straight'']', property: text, writeback: true}
+      event_bindings: {change: text_box_sm_straight_change}
       layout_properties: {col_xs: 8, row: SQCTMM, width_xs: 3}
       name: text_box_sm_straight
       properties: {type: number}
@@ -162,6 +188,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''fives'']', property: text, writeback: true}
+      event_bindings: {change: text_box_5_change}
       layout_properties: {col_xs: 1, row: CKRIKY, width_xs: 3}
       name: text_box_5
       properties: {type: number}
@@ -172,6 +199,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''lg_straight'']', property: text, writeback: true}
+      event_bindings: {change: text_box_lg_straight_change}
       layout_properties: {col_xs: 8, row: CKRIKY, width_xs: 3}
       name: text_box_lg_straight
       properties: {type: number}
@@ -182,6 +210,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''sixes'']', property: text, writeback: true}
+      event_bindings: {change: text_box_6_change}
       layout_properties: {col_xs: 1, row: JEVPEA, width_xs: 3}
       name: text_box_6
       properties: {type: number}
@@ -192,6 +221,7 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''chance'']', property: text, writeback: true}
+      event_bindings: {change: text_box_chance_change}
       layout_properties: {col_xs: 8, row: JEVPEA, width_xs: 3}
       name: text_box_chance
       properties: {type: number}
@@ -212,15 +242,15 @@ components:
       type: Label
     - data_bindings:
       - {code: 'self.item[''yahtzee'']', property: text, writeback: true}
+      event_bindings: {pressed_enter: text_box_yahtzee_pressed_enter}
       layout_properties: {col_xs: 8, row: XBTTDF, width_xs: 3}
       name: text_box_yahtzee
       properties: {type: number}
       type: TextBox
-    - event_bindings: {click: calculate_score_click}
-      layout_properties: {col_xs: 0, row: XRONKF, width_xs: 5}
-      name: calculate_score
-      properties: {align: center, font_size: 24, role: filled-button, text: CALCULATE SCORE}
-      type: Button
+    - layout_properties: {col_xs: 0, row: XRONKF, width_xs: 3}
+      name: label_16
+      properties: {role: title, text: 'TOTAL SCORE: '}
+      type: Label
     - layout_properties: {col_xs: 5, row: XRONKF, width_xs: 3}
       name: label_score
       properties: {font_size: 24}
@@ -241,21 +271,6 @@ components:
   name: label_1
   properties: {align: left, bold: true, font_size: 32, text: Yahdice!}
   type: Label
-- components:
-  - event_bindings: {click: player_1_click}
-    layout_properties: {grid_position: 'FFFHHP,AXYRRG'}
-    name: player_1
-    properties: {icon: '', role: title, text: Player One}
-    type: Link
-  - event_bindings: {click: player_2_click}
-    layout_properties: {grid_position: 'IURGHM,XZQGYX'}
-    name: player_2
-    properties: {role: title, text: Player Two}
-    type: Link
-  layout_properties: {slot: left-nav}
-  name: column_panel_1
-  properties: {}
-  type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

@@ -1,56 +1,16 @@
 from ._anvil_designer import Form1Template
 from anvil import *
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
 import random
 import time
 
-
+blank_image = '_/theme/blank.png'
 
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    # self.player_1.role=None
-    # self.player_2.role=None
-    self.player_1_click()
     self.images=[]
-
-    
-  def player_1_click(self, **event_args):
-    """This method is called when the Player1 link in the navigation pain is clicked"""
-    self.item = app_tables.table_1.get(name="player1")
-    self.player_1.role="selected"
-    self.player_2.role=None
-    self.label_score.text = ''
-    
-
-  def player_2_click(self, **event_args):
-    """This method is called when the Player2 link in the navigation pain is clicked"""
-    self.item = app_tables.table_1.get(name="player2")
-    self.player_1.role=None
-    self.player_2.role="selected"
-    self.label_score.text = ''
-
-  def clear_scores(self):
-    "This method clears all scores from the data table"
-    app_tables.table_1.delete_all_rows()
-    app_tables.table_1.add_row(name="player1")
-    app_tables.table_1.add_row(name="player2")
-    
-
-  def button_new_click(self, **event_args):
-    """This method is called when the New Game button is clicked"""
-    # It clears the scores and then assigns Player1 to be the current player
-    self.clear_scores()
-    self.item = app_tables.table_1.get(name="player1")
-    self.player_1.role="selected"
-    self.player_2.role=None
-    self.label_score.text=''  
-    
-
 
   def button_roll_click(self, **event_args):
     # self.images represents dice (images) to be rolled
@@ -76,45 +36,42 @@ class Form1(Form1Template):
     # time.sleep(0.2)
     # assign the image source to the randomly selected dice image, and make it visible
     image.source = image_number
+    self.reset_dice_position(image)
+
+  def reset_dice_position (self, image):
+    if image == self.image_1:
+      self.image_1_selected.visible = False
+    if image == self.image_2:
+      self.image_2_selected.visible = False
+    if image == self.image_3:
+      self.image_3_selected.visible = False
+    if image == self.image_4:
+      self.image_4_selected.visible = False
+    if image == self.image_5:
+      self.image_5_selected.visible = False
     image.visible = True
 
-
-
-
-  def dim(self,source):
-    if source=='1.png':
-      return '_/theme/1-dim.png'
-    if source=='2.png':
-      return '_/theme/2-dim.png'
-    if source=='3.png':
-      return '_/theme/3-dim.png'
-    if source=='4.png':
-      return '_/theme/4-dim.png'
-    if source=='5.png':
-      return '_/theme/5-dim.png'
-    if source=='6.png':
-      return '_/theme/6-dim.png'
-
   def link_1_click(self, **event_args):
-    self.image_click(self.image_1)
-
+    self.image_click(self.image_1, self.image_1_selected)
+    
   def link_2_click(self, **event_args):
-    self.image_click(self.image_2)
+    self.image_click(self.image_2, self.image_2_selected)
 
   def link_3_click(self, **event_args):
-    self.image_click(self.image_3)
+    self.image_click(self.image_3, self.image_3_selected)
 
   def link_4_click(self, **event_args):
-    self.image_click(self.image_4)
+    self.image_click(self.image_4, self.image_4_selected)
 
   def link_5_click(self, **event_args):
-    self.image_click(self.image_5)
+    self.image_click(self.image_5, self.image_5_selected)
 
-  def image_click(self, image):
-    # image.visible = False
-    self.images.append(image)
+  def image_click(self, image, image_selected):
+    image_selected.source = image.source
+    image_selected.visible = True
+    self.images.append(image) 
+    image.source ='_/theme/blank.png'
     self.button_roll.text="Roll Selected Dice"
-    image.source=self.dim(image.source.name)
 
   def check_for_bonus(self):
     """Gives player bonus score if sum of ones through sixes is at least 63"""
@@ -153,6 +110,70 @@ class Form1(Form1Template):
       if score is not None:
         sum+=score
     self.label_score.text=str(sum)
+
+  def button_new_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    print('new game button clicked')
+    scores=[self.text_box_1, self.text_box_2, self.text_box_3, self.text_box_4, self.text_box_5, self.text_box_6, self.text_box_bonus,
+           self.text_box_3_kind, self.text_box_4_kind, self.text_box_full_house, self.text_box_sm_straight, self.text_box_lg_straight,
+           self.text_box_chance, self.text_box_yahtzee]
+    for score in scores:
+      score.text=''
+    self.label_score.text='0'
+
+  def text_box_1_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_2_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_3_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_4_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_5_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_6_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_3_kind_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_4_kind_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_full_house_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_sm_straight_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_lg_straight_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_chance_change(self, **event_args):
+    """This method is called when the text in this text box is edited"""
+    self.calculate_score_click()
+
+  def text_box_yahtzee_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    self.calculate_score_click()
+
+
 
 
   
